@@ -1,0 +1,51 @@
+---
+title: "insert_r_in_rmd_tutorial"
+author: "Aiden Chen"
+date: "2023-11-24"
+output: html_document
+---
+
+```{r test_chunk, include=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+#load tidyverse library
+library(tidyverse) # used for data manipulation
+library(rmarkdown) # used for paged_table function
+library(kableExtra) # used for table
+library(ggpubr) #used for ggarrange function 
+
+#read file into R
+pop_data <- read_csv("data/gapminder_data.csv")
+
+#create a table with data from European countries in 2007 showing the countries 
+#with the largest life expectancy at the top 
+euro_data_tbl <- pop_data %>% 
+                    filter(continent == "Europe" & year == 2007) %>% 
+                    select(-continent, -year) %>% 
+                    arrange(desc(lifeExp)) %>% 
+                    rename(Country = country, "Population Size" = pop, 
+                      "Life Expectancy" = lifeExp, "GDP" = gdpPercap)
+
+```
+
+The above is a test case.
+
+```{r test_chunk_2, include=TRUE, echo=FALSE, message=TRUE, warning=FALSE}
+library(dplyr)
+a <- 4
+print(a)
+```
+
+Example of using `kbl`
+
+```{r kbl}
+euro_data_tbl %>% 
+          kbl()
+```
+
+More usages of `kbl`, such as `paged_table`
+
+```{r paged-table}
+paged_table(euro_data_tbl)
+```
+
+ 
+

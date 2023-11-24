@@ -1,0 +1,12 @@
+name: "my-website"
+navbar:
+  title: "My Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Challenge1"
+      href: challenge1.html
+    - text: "tutorial"
+      href: insert_r_in_rmd_tutorial.html
